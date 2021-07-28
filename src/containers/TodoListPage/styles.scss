@@ -1,0 +1,18 @@
+.todo-list-page-container {
+  padding: 24px;
+  .todo-list-page-title {
+    font-weight: bold;
+    text-align: center;
+    font-size: 24px;
+  }
+  .todo-control-container {
+    margin: 16px 0px;
+    text-align: center;
+    input {
+      margin-right: 8px;
+    }
+    button {
+      margin-left: 8px;
+    }
+  }
+}

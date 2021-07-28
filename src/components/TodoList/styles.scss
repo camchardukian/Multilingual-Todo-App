@@ -1,0 +1,16 @@
+.todo-list-container {
+  .todo-item-container {
+    border: 1px solid blue;
+    padding: 8px;
+    margin-top: 16px;
+    width: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 16px auto 0px;
+    .todo-item-text {
+      word-break: break-all;
+      text-align: left;
+    }
+  }
+}
