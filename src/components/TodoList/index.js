@@ -1,14 +1,20 @@
 import React from "react";
 import TodoItem from "./TodoItem";
 import "./styles.scss";
-const TodoList = ({ todoItems = [] }) => {
+const TodoList = ({ todoItems = [], onToggleTodo }) => {
   return (
     <div className="todo-list-container">
-      {todoItems.map(todoItemText => {
+      {todoItems.map(todoItem => {
+        const { todoItemText, isChecked, todoId } = todoItem;
         return (
           <TodoItem
-            key={`${todoItemText}-${Math.random()}`}
+            key={todoId}
+            todoId={todoId}
             itemText={todoItemText}
+            isChecked={isChecked}
+            onToggleTodo={todoId => {
+              onToggleTodo(todoId);
+            }}
           />
         );
       })}
