@@ -1,16 +1,23 @@
 import React from "react";
 import RadioButtonUncheckedIcon from "@material-ui/icons/RadioButtonUnchecked";
-// import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
-// @TODO in the next PR use conditional rendering when the user toggles the todo item state.
+import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
 
-const TodoItem = ({ itemText = "" }) => {
+const TodoItem = ({
+  itemText = "",
+  isChecked = false,
+  todoId,
+  onToggleTodo
+}) => {
   return (
-    <div className="todo-item-container">
+    <button
+      onClick={() => onToggleTodo(todoId)}
+      className="todo-item-container"
+    >
       <div className="todo-item-icon">
-        <RadioButtonUncheckedIcon />
+        {isChecked ? <CheckCircleOutlineIcon /> : <RadioButtonUncheckedIcon />}
       </div>
       <div className="todo-item-text">{itemText}</div>
-    </div>
+    </button>
   );
 };
 
