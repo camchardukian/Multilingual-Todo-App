@@ -30,6 +30,18 @@ const TodoListPage = () => {
     });
   };
 
+  const handleRemoveTodo = (e, todoId) => {
+    e.stopPropagation();
+    setTodoItems(todoItems => {
+      return todoItems.filter(todoItem => {
+        if (todoItem.todoId !== todoId) {
+          return todoItem;
+        }
+        return false;
+      });
+    });
+  };
+
   const [todoItems, setTodoItems] = useState([]);
   const [newTodoItemText, setNewTodoItemText] = useState("");
   return (
@@ -43,7 +55,11 @@ const TodoListPage = () => {
         ></input>
         <button onClick={handleCreateNewTodo}>Add Todo</button>
       </div>
-      <TodoList todoItems={todoItems} onToggleTodo={handleToggleTodo} />
+      <TodoList
+        todoItems={todoItems}
+        onToggleTodo={handleToggleTodo}
+        onRemoveTodo={handleRemoveTodo}
+      />
     </div>
   );
 };
