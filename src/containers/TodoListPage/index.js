@@ -1,8 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import TodoList from "../../components/TodoList";
 import "./styles.scss";
 const TodoListPage = () => {
+  const [todoItems, setTodoItems] = useState([]);
+  const [newTodoItemText, setNewTodoItemText] = useState("");
+  const [hasUncheckedItems, setHasUncheckedItems] = useState(false);
+
+  useEffect(() => {
+    setHasUncheckedItems(
+      todoItems.some(item => {
+        return item.isChecked === false;
+      })
+    );
+  }, [todoItems]);
   const handleCreateNewTodo = () => {
     const todoId = uuidv4();
     setTodoItems(() => [
@@ -42,8 +53,16 @@ const TodoListPage = () => {
     });
   };
 
-  const [todoItems, setTodoItems] = useState([]);
-  const [newTodoItemText, setNewTodoItemText] = useState("");
+  const handleToggleAll = () => {
+    setTodoItems(todoItems => {
+      return todoItems.map(todoItem => {
+        return {
+          ...todoItem,
+          isChecked: hasUncheckedItems
+        };
+      });
+    });
+  };
   return (
     <div className="todo-list-page-container">
       <div className="todo-list-page-title">Todo List</div>
@@ -54,6 +73,11 @@ const TodoListPage = () => {
           onChange={handleTodoContentChange}
         ></input>
         <button onClick={handleCreateNewTodo}>Add Todo</button>
+        {todoItems.length > 0 && (
+          <button onClick={handleToggleAll}>
+            {hasUncheckedItems ? "Toggle All Checked" : "Toggle All Unchecked"}
+          </button>
+        )}
       </div>
       <TodoList
         todoItems={todoItems}
