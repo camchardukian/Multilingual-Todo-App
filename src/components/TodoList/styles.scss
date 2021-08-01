@@ -1,16 +1,27 @@
 .todo-list-container {
-  .todo-item-container {
-    border: 1px solid blue;
-    padding: 8px;
-    margin-top: 16px;
-    width: 320px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 16px auto 0px;
-    .todo-item-text {
-      word-break: break-all;
-      text-align: left;
+  .todo-item-outer-drop-container {
+    padding: 8px 0px;
+    .todo-item-container {
+      width: 320px;
+      background-color: pink;
+      margin: 0 auto;
+      .highlight {
+        border: 5px solid red !important;
+      }
+      .todo-item-content {
+        padding: 8px;
+        border: 1px solid blue;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .todo-item-text {
+          word-break: break-all;
+          text-align: left;
+        }
+      }
+      .todo-item-content:hover {
+        cursor: pointer;
+      }
     }
   }
 }
