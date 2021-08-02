@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
+import i18n from "../../translations/index";
 import TodoList from "../../components/TodoList";
 import Helpers from "../../utils/helpers";
 import "./styles.scss";
@@ -118,17 +119,21 @@ const TodoListPage = () => {
 
   return (
     <div className="todo-list-page-container">
-      <div className="todo-list-page-title">Todo List</div>
+      <div className="todo-list-page-title">{i18n.t("todoList.title")}</div>
       <div className="todo-control-container">
         <input
           type="text"
           value={newTodoItemText}
           onChange={handleTodoContentChange}
         ></input>
-        <button onClick={handleCreateNewTodo}>Add Todo</button>
+        <button onClick={handleCreateNewTodo}>
+          {i18n.t("todoList.addTodo")}
+        </button>
         {todoItems.length > 0 && (
           <button onClick={handleToggleAll}>
-            {hasUncheckedItems ? "Toggle All Checked" : "Toggle All Unchecked"}
+            {hasUncheckedItems
+              ? `${i18n.t("todoList.toggleChecked")}`
+              : `${i18n.t("todoList.toggleUnchecked")}`}
           </button>
         )}
       </div>
