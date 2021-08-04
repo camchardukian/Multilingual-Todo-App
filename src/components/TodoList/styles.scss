@@ -1,22 +1,25 @@
+@import "../../styles/global-styles.scss";
 .todo-list-container {
   .todo-item-outer-drop-container {
     padding: 8px 0px;
     .todo-item-container {
       width: 320px;
-      background-color: pink;
+      background-color: $light-pink;
       margin: 0 auto;
       .highlight {
-        border: 5px solid red !important;
+        border: 5px solid $bright-red !important;
       }
       .todo-item-content {
         padding: 8px;
-        border: 1px solid blue;
+        font-family: $default-font-family;
+        border: 1px solid $deep-blue;
         display: flex;
         align-items: center;
         justify-content: space-between;
         .todo-item-text {
           word-break: break-all;
           text-align: left;
+          font-family: $default-font-family;
         }
       }
       .todo-item-content:hover {
